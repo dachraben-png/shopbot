@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Coffee Egan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Page d'accueil -->
+    <div id="homePage" class="page active">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <button class="close-btn" onclick="window.Telegram.WebApp.close()">✕</button>
+                <h1>Coffee Egan</h1>
+            </div>
+            <div class="logo-container">
+                <img src="logo.png" alt="Coffee Egan Logo" class="logo">
+            </div>
+        </header>
+
+        <!-- Filtres -->
+        <div class="filters">
+            <select id="categoryFilter" onchange="filterProducts()">
+                <option value="all">Toutes les catégories</option>
+                <option value="fleurs">Fleurs</option>
+                <option value="concentres">Concentrés</option>
+                <option value="edibles">Edibles</option>
+            </select>
+            <select id="farmFilter" onchange="filterProducts()">
+                <option value="all">Toutes les farms</option>
+                <option value="cali">Cali</option>
+                <option value="spain">Spain</option>
+                <option value="local">Local</option>
+            </select>
+        </div>
+
+        <!-- Grille de produits -->
+        <div id="productsGrid" class="products-grid">
+            <!-- Les produits seront chargés dynamiquement via JS -->
+        </div>
+
+        <!-- Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" onclick="showHome()">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Menu</span>
+            </button>
+            <button class="nav-btn" onclick="showInfo()">
+                <span class="nav-icon">ℹ️</span>
+                <span class="nav-label">Infos</span>
+            </button>
+            <button class="nav-btn" onclick="openChannel()">
+                <span class="nav-icon">📢</span>
+                <span class="nav-label">Canal</span>
+            </button>
+            <button class="nav-btn" onclick="openContact()">
+                <span class="nav-icon">✉️</span>
+                <span class="nav-label">Contact</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Page produit -->
+    <div id="productPage" class="page">
+        <header>
+            <div class="header-content">
+                <button class="back-btn" onclick="showHome()">← Retour</button>
+                <h1 id="productTitle">Produit</h1>
+            </div>
+        </header>
+
+        <div class="product-detail">
+            <!-- Media (image ou vidéo) -->
+            <div class="product-media">
+                <img id="productImage" src="" alt="Product" style="display:none;">
+                <video id="productVideo" autoplay loop muted playsinline style="display:none;">
+                    <source src="" type="video/mp4">
+                </video>
+            </div>
+
+            <!-- Informations produit -->
+            <div class="product-info">
+                <h2 id="productName"></h2>
+                <p id="productDescription"></p>
+
+                <!-- Variétés -->
+                <div class="varieties-section">
+                    <h3>Choisissez votre variété :</h3>
+                    <div id="varietiesList" class="varieties-radio"></div>
+                </div>
+
+                <!-- Prix / Quantités -->
+                <div class="prices-section">
+                    <h3>Choisissez votre quantité :</h3>
+                    <div id="pricesList" class="prices-radio"></div>
+                </div>
+
+                <!-- Bouton commander -->
+                <button id="orderBtn" class="order-btn">
+                    📱 COMMANDER VIA TELEGRAM
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Infos -->
+    <div id="infoPage" class="page">
+        <header>
+            <div class="header-content">
+                <button class="back-btn" onclick="showHome()">← Retour</button>
+                <h1>Informations</h1>
+            </div>
+        </header>
+        <div class="info-content">
+            <h2>À propos de Coffee Egan</h2>
+            <p>Bienvenue sur notre shop ! Retrouvez nos meilleurs produits sélectionnés avec soin.</p>
+            <h3>Livraison</h3>
+            <p>Livraison rapide et discrète partout en France.</p>
+            <h3>Paiement</h3>
+            <p>Modes de paiement sécurisés disponibles.</p>
+        </div>
+    </div>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="products.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
